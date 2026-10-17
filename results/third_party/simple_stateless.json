@@ -1,0 +1,297 @@
+{
+  "url": "http://127.0.0.1:9102/mcp",
+  "negotiated_protocol": "2025-11-25",
+  "findings": [
+    {
+      "check_id": "PROTO-01",
+      "category": "protocol",
+      "kind": "spec",
+      "severity": "pass",
+      "message": "initialize ok, protocol 2025-11-25. Endpoint redirected from http://127.0.0.1:9102/mcp to http://127.0.0.1:9102/mcp/; checks ran against the final URL.",
+      "evidence": {
+        "http_status": 200,
+        "content_type": "text/event-stream",
+        "parse_error": null,
+        "protocolVersion": "2025-11-25",
+        "redirected_from": "http://127.0.0.1:9102/mcp",
+        "endpoint": "http://127.0.0.1:9102/mcp/"
+      }
+    },
+    {
+      "check_id": "PROTO-02",
+      "category": "protocol",
+      "kind": "spec",
+      "severity": "pass",
+      "message": "Invalid MCP-Protocol-Version header got 400.",
+      "evidence": {
+        "http_status": 400
+      }
+    },
+    {
+      "check_id": "PROTO-03",
+      "category": "protocol",
+      "kind": "spec",
+      "severity": "pass",
+      "message": "notifications/initialized returned 202.",
+      "evidence": {
+        "http_status": 202
+      }
+    },
+    {
+      "check_id": "PROTO-04",
+      "category": "protocol",
+      "kind": "spec",
+      "severity": "fail",
+      "message": "Request with a foreign Origin got HTTP 200; servers must reject it with 403 (enable DNS-rebinding / Origin protection).",
+      "evidence": {
+        "http_status": 200
+      }
+    },
+    {
+      "check_id": "PROTO-05",
+      "category": "protocol",
+      "kind": "spec",
+      "severity": "pass",
+      "message": "GET returned 200 (text/event-stream), which the spec allows.",
+      "evidence": {
+        "http_status": 200,
+        "content_type": "text/event-stream"
+      }
+    },
+    {
+      "check_id": "PROTO-06",
+      "category": "protocol",
+      "kind": "spec",
+      "severity": "pass",
+      "message": "Server is stateless: no Mcp-Session-Id was issued.",
+      "evidence": {
+        "stateless": true
+      }
+    },
+    {
+      "check_id": "PROTO-07",
+      "category": "protocol",
+      "kind": "spec",
+      "severity": "pass",
+      "message": "All 1 tools have valid schemas.",
+      "evidence": {
+        "tool_count": 1
+      }
+    },
+    {
+      "check_id": "PROTO-08",
+      "category": "protocol",
+      "kind": "spec",
+      "severity": "fail",
+      "message": "Unknown method returned HTTP 200 with error code -32602; expected JSON-RPC -32601 and HTTP below 500.",
+      "evidence": {
+        "http_status": 200,
+        "error_code": -32602,
+        "parse_error": null
+      }
+    },
+    {
+      "check_id": "PROTO-09",
+      "category": "protocol",
+      "kind": "spec",
+      "severity": "pass",
+      "message": "No authentication challenge observed (initialize returned HTTP 200).",
+      "evidence": {
+        "http_status": 200
+      }
+    },
+    {
+      "check_id": "LAT-01",
+      "category": "latency",
+      "kind": "heuristic",
+      "severity": "pass",
+      "message": "initialize took 2 ms (budget 1500 ms).",
+      "evidence": {
+        "init_ms": 2.4,
+        "budget_ms": 1500.0
+      }
+    },
+    {
+      "check_id": "LAT-02",
+      "category": "latency",
+      "kind": "heuristic",
+      "severity": "pass",
+      "message": "tools/list took 4 ms (budget 500 ms).",
+      "evidence": {
+        "list_tools_ms": 4.0,
+        "budget_ms": 500.0
+      }
+    },
+    {
+      "check_id": "LAT-03",
+      "category": "latency",
+      "kind": "heuristic",
+      "severity": "pass",
+      "message": "start-notification-stream: p95 latency 11 ms over 10 calls (budget 800 ms).",
+      "evidence": {
+        "tool": "start-notification-stream",
+        "calls": 10,
+        "p95_ms": 10.6,
+        "max_ms": 10.6,
+        "budget_ms": 800.0
+      }
+    },
+    {
+      "check_id": "SPEECH-01",
+      "category": "speech",
+      "kind": "heuristic",
+      "severity": "pass",
+      "message": "start-notification-stream: reply is 9 words (limit 45).",
+      "evidence": {
+        "tool": "start-notification-stream",
+        "reply": "Sent 1 notifications with 0.1s interval for caller: sayable",
+        "words": 9,
+        "max_words": 45
+      }
+    },
+    {
+      "check_id": "SPEECH-02",
+      "category": "speech",
+      "kind": "heuristic",
+      "severity": "pass",
+      "message": "start-notification-stream: reply has no markdown or table characters.",
+      "evidence": {
+        "tool": "start-notification-stream",
+        "reply": "Sent 1 notifications with 0.1s interval for caller: sayable",
+        "matches": []
+      }
+    },
+    {
+      "check_id": "SPEECH-03",
+      "category": "speech",
+      "kind": "heuristic",
+      "severity": "pass",
+      "message": "start-notification-stream: reply has no URL, ISO timestamp or UUID.",
+      "evidence": {
+        "tool": "start-notification-stream",
+        "reply": "Sent 1 notifications with 0.1s interval for caller: sayable",
+        "matches": []
+      }
+    },
+    {
+      "check_id": "SPEECH-04",
+      "category": "speech",
+      "kind": "heuristic",
+      "severity": "pass",
+      "message": "start-notification-stream: reply text is not raw JSON.",
+      "evidence": {
+        "tool": "start-notification-stream",
+        "reply": "Sent 1 notifications with 0.1s interval for caller: sayable"
+      }
+    },
+    {
+      "check_id": "SPEECH-05",
+      "category": "speech",
+      "kind": "heuristic",
+      "severity": "pass",
+      "message": "start-notification-stream: reply has no emoji.",
+      "evidence": {
+        "tool": "start-notification-stream",
+        "reply": "Sent 1 notifications with 0.1s interval for caller: sayable",
+        "matches": []
+      }
+    },
+    {
+      "check_id": "SPEECH-06",
+      "category": "speech",
+      "kind": "heuristic",
+      "severity": "fail",
+      "message": "start-notification-stream: no structuredContent returned alongside the spoken text.",
+      "evidence": {
+        "tool": "start-notification-stream",
+        "reply": "Sent 1 notifications with 0.1s interval for caller: sayable"
+      }
+    },
+    {
+      "check_id": "DES-01",
+      "category": "design",
+      "kind": "heuristic",
+      "severity": "fail",
+      "message": "Tools missing an explicit readOnlyHint or destructiveHint: start-notification-stream.",
+      "evidence": {
+        "tools_checked": 1,
+        "offending_tools": [
+          "start-notification-stream"
+        ]
+      }
+    },
+    {
+      "check_id": "DES-02",
+      "category": "design",
+      "kind": "heuristic",
+      "severity": "fail",
+      "message": "Non-read-only tools without a confirm* parameter: start-notification-stream.",
+      "evidence": {
+        "tools_checked": 1,
+        "offending_tools": [
+          "start-notification-stream"
+        ]
+      }
+    },
+    {
+      "check_id": "DES-03",
+      "category": "design",
+      "kind": "heuristic",
+      "severity": "pass",
+      "message": "Every description is 20-300 characters.",
+      "evidence": {
+        "tools_checked": 1,
+        "offending_tools": []
+      }
+    },
+    {
+      "check_id": "DES-04",
+      "category": "design",
+      "kind": "heuristic",
+      "severity": "pass",
+      "message": "No pair of descriptions has word overlap >= 0.5.",
+      "evidence": {
+        "similar_pairs": [],
+        "limit": 0.5
+      }
+    },
+    {
+      "check_id": "DES-05",
+      "category": "design",
+      "kind": "heuristic",
+      "severity": "pass",
+      "message": "Server exposes 1 tools (limit 15).",
+      "evidence": {
+        "tool_count": 1,
+        "limit": 15
+      }
+    },
+    {
+      "check_id": "DES-06",
+      "category": "design",
+      "kind": "heuristic",
+      "severity": "pass",
+      "message": "No tool has more than 3 required parameters.",
+      "evidence": {
+        "tools_checked": 1,
+        "offending_tools": []
+      }
+    }
+  ],
+  "category_scores": {
+    "protocol": 23,
+    "latency": 15,
+    "speech": 29,
+    "design": 13
+  },
+  "total": 80,
+  "spec_score": 77,
+  "heuristic_score": 81,
+  "generated_at": "2026-10-17T10:54:49+00:00",
+  "sayable_version": "0.1.0",
+  "server": {
+    "name": "mcp-streamable-http-stateless-demo",
+    "version": "1.29.0",
+    "tool_count": 1
+  }
+}

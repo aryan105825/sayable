@@ -1,0 +1,396 @@
+{
+  "url": "http://127.0.0.1:8802/mcp",
+  "negotiated_protocol": "2025-11-25",
+  "findings": [
+    {
+      "check_id": "PROTO-01",
+      "category": "protocol",
+      "kind": "spec",
+      "severity": "pass",
+      "message": "initialize ok, protocol 2025-11-25.",
+      "evidence": {
+        "http_status": 200,
+        "content_type": "text/event-stream",
+        "parse_error": null,
+        "protocolVersion": "2025-11-25"
+      }
+    },
+    {
+      "check_id": "PROTO-02",
+      "category": "protocol",
+      "kind": "spec",
+      "severity": "pass",
+      "message": "Invalid MCP-Protocol-Version header got 400.",
+      "evidence": {
+        "http_status": 400
+      }
+    },
+    {
+      "check_id": "PROTO-03",
+      "category": "protocol",
+      "kind": "spec",
+      "severity": "pass",
+      "message": "notifications/initialized returned 202.",
+      "evidence": {
+        "http_status": 202
+      }
+    },
+    {
+      "check_id": "PROTO-04",
+      "category": "protocol",
+      "kind": "spec",
+      "severity": "pass",
+      "message": "Request with a foreign Origin got 403.",
+      "evidence": {
+        "http_status": 403
+      }
+    },
+    {
+      "check_id": "PROTO-05",
+      "category": "protocol",
+      "kind": "spec",
+      "severity": "pass",
+      "message": "GET returned 200 (text/event-stream), which the spec allows.",
+      "evidence": {
+        "http_status": 200,
+        "content_type": "text/event-stream"
+      }
+    },
+    {
+      "check_id": "PROTO-06",
+      "category": "protocol",
+      "kind": "spec",
+      "severity": "pass",
+      "message": "Unknown Mcp-Session-Id got 404.",
+      "evidence": {
+        "http_status": 404
+      }
+    },
+    {
+      "check_id": "PROTO-07",
+      "category": "protocol",
+      "kind": "spec",
+      "severity": "pass",
+      "message": "All 4 tools have valid schemas.",
+      "evidence": {
+        "tool_count": 4
+      }
+    },
+    {
+      "check_id": "PROTO-08",
+      "category": "protocol",
+      "kind": "spec",
+      "severity": "fail",
+      "message": "Unknown method returned HTTP 200 with error code -32602; expected JSON-RPC -32601 and HTTP below 500.",
+      "evidence": {
+        "http_status": 200,
+        "error_code": -32602,
+        "parse_error": null
+      }
+    },
+    {
+      "check_id": "PROTO-09",
+      "category": "protocol",
+      "kind": "spec",
+      "severity": "pass",
+      "message": "No authentication challenge observed (initialize returned HTTP 200).",
+      "evidence": {
+        "http_status": 200
+      }
+    },
+    {
+      "check_id": "LAT-01",
+      "category": "latency",
+      "kind": "heuristic",
+      "severity": "pass",
+      "message": "initialize took 5 ms (budget 1500 ms).",
+      "evidence": {
+        "init_ms": 5.2,
+        "budget_ms": 1500.0
+      }
+    },
+    {
+      "check_id": "LAT-02",
+      "category": "latency",
+      "kind": "heuristic",
+      "severity": "pass",
+      "message": "tools/list took 5 ms (budget 500 ms).",
+      "evidence": {
+        "list_tools_ms": 4.6,
+        "budget_ms": 500.0
+      }
+    },
+    {
+      "check_id": "LAT-03",
+      "category": "latency",
+      "kind": "heuristic",
+      "severity": "pass",
+      "message": "get_inventory: p95 latency 11 ms over 10 calls (budget 800 ms).",
+      "evidence": {
+        "tool": "get_inventory",
+        "calls": 10,
+        "p95_ms": 10.6,
+        "max_ms": 10.6,
+        "budget_ms": 800.0
+      }
+    },
+    {
+      "check_id": "LAT-03",
+      "category": "latency",
+      "kind": "heuristic",
+      "severity": "pass",
+      "message": "get_expiring: p95 latency 8 ms over 10 calls (budget 800 ms).",
+      "evidence": {
+        "tool": "get_expiring",
+        "calls": 10,
+        "p95_ms": 8.5,
+        "max_ms": 8.5,
+        "budget_ms": 800.0
+      }
+    },
+    {
+      "check_id": "SPEECH-01",
+      "category": "speech",
+      "kind": "heuristic",
+      "severity": "fail",
+      "message": "get_inventory: reply is 146 words (limit 45).",
+      "evidence": {
+        "tool": "get_inventory",
+        "reply": "| id | name | quantity | expires_on | added_at |\n|----|------|----------|------------|----------|\n| 1 | whole milk | 1 | 2026-10-19 | 2026-10-17T00:00:00+00:00 |\n| 2 | oat milk | 2 | 2026-10-26 | 2026-10-17T00:00:00+00:00 |\n| 3 | eggs | 12 | 2026-10-22 | 2026-10-17T00:00:00+00:00 |\n| 4 | butter | 1 ...",
+        "words": 146,
+        "max_words": 45
+      }
+    },
+    {
+      "check_id": "SPEECH-01",
+      "category": "speech",
+      "kind": "heuristic",
+      "severity": "fail",
+      "message": "get_expiring: reply is 100 words (limit 45).",
+      "evidence": {
+        "tool": "get_expiring",
+        "reply": "[\n  {\n    \"id\": 9,\n    \"name\": \"bread\",\n    \"quantity\": 1,\n    \"expires_at\": \"2026-10-15T00:00:00+00:00\",\n    \"added_at\": \"2026-10-17T00:00:00+00:00\"\n  },\n  {\n    \"id\": 5,\n    \"name\": \"spinach\",\n    \"quantity\": 1,\n    \"expires_at\": \"2026-10-16T00:00:00+00:00\",\n    \"added_at\": \"2026-10-17T00:00:00+00...",
+        "words": 100,
+        "max_words": 45
+      }
+    },
+    {
+      "check_id": "SPEECH-02",
+      "category": "speech",
+      "kind": "heuristic",
+      "severity": "fail",
+      "message": "get_inventory: reply contains markdown or table characters (table pipe).",
+      "evidence": {
+        "tool": "get_inventory",
+        "reply": "| id | name | quantity | expires_on | added_at |\n|----|------|----------|------------|----------|\n| 1 | whole milk | 1 | 2026-10-19 | 2026-10-17T00:00:00+00:00 |\n| 2 | oat milk | 2 | 2026-10-26 | 2026-10-17T00:00:00+00:00 |\n| 3 | eggs | 12 | 2026-10-22 | 2026-10-17T00:00:00+00:00 |\n| 4 | butter | 1 ...",
+        "matches": [
+          "table pipe"
+        ]
+      }
+    },
+    {
+      "check_id": "SPEECH-02",
+      "category": "speech",
+      "kind": "heuristic",
+      "severity": "pass",
+      "message": "get_expiring: reply has no markdown or table characters.",
+      "evidence": {
+        "tool": "get_expiring",
+        "reply": "[\n  {\n    \"id\": 9,\n    \"name\": \"bread\",\n    \"quantity\": 1,\n    \"expires_at\": \"2026-10-15T00:00:00+00:00\",\n    \"added_at\": \"2026-10-17T00:00:00+00:00\"\n  },\n  {\n    \"id\": 5,\n    \"name\": \"spinach\",\n    \"quantity\": 1,\n    \"expires_at\": \"2026-10-16T00:00:00+00:00\",\n    \"added_at\": \"2026-10-17T00:00:00+00...",
+        "matches": []
+      }
+    },
+    {
+      "check_id": "SPEECH-03",
+      "category": "speech",
+      "kind": "heuristic",
+      "severity": "fail",
+      "message": "get_inventory: reply contains unspeakable data (ISO date or timestamp).",
+      "evidence": {
+        "tool": "get_inventory",
+        "reply": "| id | name | quantity | expires_on | added_at |\n|----|------|----------|------------|----------|\n| 1 | whole milk | 1 | 2026-10-19 | 2026-10-17T00:00:00+00:00 |\n| 2 | oat milk | 2 | 2026-10-26 | 2026-10-17T00:00:00+00:00 |\n| 3 | eggs | 12 | 2026-10-22 | 2026-10-17T00:00:00+00:00 |\n| 4 | butter | 1 ...",
+        "matches": [
+          "ISO date or timestamp"
+        ]
+      }
+    },
+    {
+      "check_id": "SPEECH-03",
+      "category": "speech",
+      "kind": "heuristic",
+      "severity": "fail",
+      "message": "get_expiring: reply contains unspeakable data (ISO date or timestamp).",
+      "evidence": {
+        "tool": "get_expiring",
+        "reply": "[\n  {\n    \"id\": 9,\n    \"name\": \"bread\",\n    \"quantity\": 1,\n    \"expires_at\": \"2026-10-15T00:00:00+00:00\",\n    \"added_at\": \"2026-10-17T00:00:00+00:00\"\n  },\n  {\n    \"id\": 5,\n    \"name\": \"spinach\",\n    \"quantity\": 1,\n    \"expires_at\": \"2026-10-16T00:00:00+00:00\",\n    \"added_at\": \"2026-10-17T00:00:00+00...",
+        "matches": [
+          "ISO date or timestamp"
+        ]
+      }
+    },
+    {
+      "check_id": "SPEECH-04",
+      "category": "speech",
+      "kind": "heuristic",
+      "severity": "pass",
+      "message": "get_inventory: reply text is not raw JSON.",
+      "evidence": {
+        "tool": "get_inventory",
+        "reply": "| id | name | quantity | expires_on | added_at |\n|----|------|----------|------------|----------|\n| 1 | whole milk | 1 | 2026-10-19 | 2026-10-17T00:00:00+00:00 |\n| 2 | oat milk | 2 | 2026-10-26 | 2026-10-17T00:00:00+00:00 |\n| 3 | eggs | 12 | 2026-10-22 | 2026-10-17T00:00:00+00:00 |\n| 4 | butter | 1 ..."
+      }
+    },
+    {
+      "check_id": "SPEECH-04",
+      "category": "speech",
+      "kind": "heuristic",
+      "severity": "fail",
+      "message": "get_expiring: reply text is raw JSON.",
+      "evidence": {
+        "tool": "get_expiring",
+        "reply": "[\n  {\n    \"id\": 9,\n    \"name\": \"bread\",\n    \"quantity\": 1,\n    \"expires_at\": \"2026-10-15T00:00:00+00:00\",\n    \"added_at\": \"2026-10-17T00:00:00+00:00\"\n  },\n  {\n    \"id\": 5,\n    \"name\": \"spinach\",\n    \"quantity\": 1,\n    \"expires_at\": \"2026-10-16T00:00:00+00:00\",\n    \"added_at\": \"2026-10-17T00:00:00+00..."
+      }
+    },
+    {
+      "check_id": "SPEECH-05",
+      "category": "speech",
+      "kind": "heuristic",
+      "severity": "pass",
+      "message": "get_inventory: reply has no emoji.",
+      "evidence": {
+        "tool": "get_inventory",
+        "reply": "| id | name | quantity | expires_on | added_at |\n|----|------|----------|------------|----------|\n| 1 | whole milk | 1 | 2026-10-19 | 2026-10-17T00:00:00+00:00 |\n| 2 | oat milk | 2 | 2026-10-26 | 2026-10-17T00:00:00+00:00 |\n| 3 | eggs | 12 | 2026-10-22 | 2026-10-17T00:00:00+00:00 |\n| 4 | butter | 1 ...",
+        "matches": []
+      }
+    },
+    {
+      "check_id": "SPEECH-05",
+      "category": "speech",
+      "kind": "heuristic",
+      "severity": "pass",
+      "message": "get_expiring: reply has no emoji.",
+      "evidence": {
+        "tool": "get_expiring",
+        "reply": "[\n  {\n    \"id\": 9,\n    \"name\": \"bread\",\n    \"quantity\": 1,\n    \"expires_at\": \"2026-10-15T00:00:00+00:00\",\n    \"added_at\": \"2026-10-17T00:00:00+00:00\"\n  },\n  {\n    \"id\": 5,\n    \"name\": \"spinach\",\n    \"quantity\": 1,\n    \"expires_at\": \"2026-10-16T00:00:00+00:00\",\n    \"added_at\": \"2026-10-17T00:00:00+00...",
+        "matches": []
+      }
+    },
+    {
+      "check_id": "SPEECH-06",
+      "category": "speech",
+      "kind": "heuristic",
+      "severity": "pass",
+      "message": "get_inventory: structuredContent present and valid against outputSchema.",
+      "evidence": {
+        "tool": "get_inventory",
+        "reply": "| id | name | quantity | expires_on | added_at |\n|----|------|----------|------------|----------|\n| 1 | whole milk | 1 | 2026-10-19 | 2026-10-17T00:00:00+00:00 |\n| 2 | oat milk | 2 | 2026-10-26 | 2026-10-17T00:00:00+00:00 |\n| 3 | eggs | 12 | 2026-10-22 | 2026-10-17T00:00:00+00:00 |\n| 4 | butter | 1 ...",
+        "schema_errors": [],
+        "has_output_schema": true
+      }
+    },
+    {
+      "check_id": "SPEECH-06",
+      "category": "speech",
+      "kind": "heuristic",
+      "severity": "pass",
+      "message": "get_expiring: structuredContent present and valid against outputSchema.",
+      "evidence": {
+        "tool": "get_expiring",
+        "reply": "[\n  {\n    \"id\": 9,\n    \"name\": \"bread\",\n    \"quantity\": 1,\n    \"expires_at\": \"2026-10-15T00:00:00+00:00\",\n    \"added_at\": \"2026-10-17T00:00:00+00:00\"\n  },\n  {\n    \"id\": 5,\n    \"name\": \"spinach\",\n    \"quantity\": 1,\n    \"expires_at\": \"2026-10-16T00:00:00+00:00\",\n    \"added_at\": \"2026-10-17T00:00:00+00...",
+        "schema_errors": [],
+        "has_output_schema": true
+      }
+    },
+    {
+      "check_id": "DES-01",
+      "category": "design",
+      "kind": "heuristic",
+      "severity": "fail",
+      "message": "Tools missing an explicit readOnlyHint or destructiveHint: get_inventory, get_expiring, add_item, delete_items.",
+      "evidence": {
+        "tools_checked": 4,
+        "offending_tools": [
+          "get_inventory",
+          "get_expiring",
+          "add_item",
+          "delete_items"
+        ]
+      }
+    },
+    {
+      "check_id": "DES-02",
+      "category": "design",
+      "kind": "heuristic",
+      "severity": "fail",
+      "message": "Non-read-only tools without a confirm* parameter: get_inventory, get_expiring, add_item, delete_items.",
+      "evidence": {
+        "tools_checked": 4,
+        "offending_tools": [
+          "get_inventory",
+          "get_expiring",
+          "add_item",
+          "delete_items"
+        ]
+      }
+    },
+    {
+      "check_id": "DES-03",
+      "category": "design",
+      "kind": "heuristic",
+      "severity": "pass",
+      "message": "Every description is 20-300 characters.",
+      "evidence": {
+        "tools_checked": 4,
+        "offending_tools": []
+      }
+    },
+    {
+      "check_id": "DES-04",
+      "category": "design",
+      "kind": "heuristic",
+      "severity": "pass",
+      "message": "No pair of descriptions has word overlap >= 0.5.",
+      "evidence": {
+        "similar_pairs": [],
+        "limit": 0.5
+      }
+    },
+    {
+      "check_id": "DES-05",
+      "category": "design",
+      "kind": "heuristic",
+      "severity": "pass",
+      "message": "Server exposes 4 tools (limit 15).",
+      "evidence": {
+        "tool_count": 4,
+        "limit": 15
+      }
+    },
+    {
+      "check_id": "DES-06",
+      "category": "design",
+      "kind": "heuristic",
+      "severity": "pass",
+      "message": "No tool has more than 3 required parameters.",
+      "evidence": {
+        "tools_checked": 4,
+        "offending_tools": []
+      }
+    }
+  ],
+  "category_scores": {
+    "protocol": 27,
+    "latency": 15,
+    "speech": 18,
+    "design": 13
+  },
+  "total": 73,
+  "spec_score": 90,
+  "heuristic_score": 66,
+  "generated_at": "2026-10-17T15:34:39+00:00",
+  "sayable_version": "0.1.0",
+  "server": {
+    "name": "baseline-pantry",
+    "version": "1.29.0",
+    "tool_count": 4
+  }
+}

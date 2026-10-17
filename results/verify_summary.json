@@ -1,0 +1,72 @@
+{
+  "generated_at": "2026-10-17T15:34:40.509744+00:00",
+  "mode": "fast",
+  "ok": true,
+  "counts": {
+    "PASS": 12,
+    "FAIL": 0,
+    "NOT CLAIMED": 0
+  },
+  "steps": [
+    {
+      "id": "S0.pip_check",
+      "status": "PASS",
+      "detail": "pip check: No broken requirements found."
+    },
+    {
+      "id": "S0.pins",
+      "status": "PASS",
+      "detail": "4 requirements pinned and installed at exactly those versions"
+    },
+    {
+      "id": "C12",
+      "status": "PASS",
+      "detail": "pytest: 37 passed in 0.23s"
+    },
+    {
+      "id": "S2",
+      "status": "PASS",
+      "detail": "both servers answered a real MCP initialize (http://127.0.0.1:8801/mcp, http://127.0.0.1:8802/mcp)"
+    },
+    {
+      "id": "C1",
+      "status": "PASS",
+      "detail": "negotiated protocol pantry=2025-11-25 baseline=2025-11-25 (need >= 2025-11-25)"
+    },
+    {
+      "id": "C2",
+      "status": "PASS",
+      "detail": "pantry protocol score 27/30: only PROTO-08 differs, a known mcp 1.29.0 deviation (-32602 instead of -32601, FL-01)"
+    },
+    {
+      "id": "C3",
+      "status": "PASS",
+      "detail": "spec parity: baseline spec_score=90 (need >=80), pantry=90; heuristic (configurable): pantry=97 (need >=85) baseline=66 gap=31 (need >=30)"
+    },
+    {
+      "id": "C5",
+      "status": "PASS",
+      "detail": "pantry SPEECH-01..05 failures: none"
+    },
+    {
+      "id": "C6",
+      "status": "PASS",
+      "detail": "baseline SPEECH failures: SPEECH-01, SPEECH-02, SPEECH-03, SPEECH-04"
+    },
+    {
+      "id": "C4",
+      "status": "PASS",
+      "detail": "direct SQLite counts: baseline 12->0, pantry 12->12"
+    },
+    {
+      "id": "C7",
+      "status": "PASS",
+      "detail": "'milk' -> needs_clarification=True options=['oat milk', 'whole milk'] reply='Did you mean oat milk or whole milk?'"
+    },
+    {
+      "id": "C8",
+      "status": "PASS",
+      "detail": "forged token and replayed token deleted nothing (12 rows intact); valid token deleted all"
+    }
+  ]
+}

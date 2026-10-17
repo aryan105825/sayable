@@ -1,0 +1,382 @@
+{
+  "url": "http://127.0.0.1:8801/mcp",
+  "negotiated_protocol": "2025-11-25",
+  "findings": [
+    {
+      "check_id": "PROTO-01",
+      "category": "protocol",
+      "kind": "spec",
+      "severity": "pass",
+      "message": "initialize ok, protocol 2025-11-25.",
+      "evidence": {
+        "http_status": 200,
+        "content_type": "text/event-stream",
+        "parse_error": null,
+        "protocolVersion": "2025-11-25"
+      }
+    },
+    {
+      "check_id": "PROTO-02",
+      "category": "protocol",
+      "kind": "spec",
+      "severity": "pass",
+      "message": "Invalid MCP-Protocol-Version header got 400.",
+      "evidence": {
+        "http_status": 400
+      }
+    },
+    {
+      "check_id": "PROTO-03",
+      "category": "protocol",
+      "kind": "spec",
+      "severity": "pass",
+      "message": "notifications/initialized returned 202.",
+      "evidence": {
+        "http_status": 202
+      }
+    },
+    {
+      "check_id": "PROTO-04",
+      "category": "protocol",
+      "kind": "spec",
+      "severity": "pass",
+      "message": "Request with a foreign Origin got 403.",
+      "evidence": {
+        "http_status": 403
+      }
+    },
+    {
+      "check_id": "PROTO-05",
+      "category": "protocol",
+      "kind": "spec",
+      "severity": "pass",
+      "message": "GET returned 200 (text/event-stream), which the spec allows.",
+      "evidence": {
+        "http_status": 200,
+        "content_type": "text/event-stream"
+      }
+    },
+    {
+      "check_id": "PROTO-06",
+      "category": "protocol",
+      "kind": "spec",
+      "severity": "pass",
+      "message": "Unknown Mcp-Session-Id got 404.",
+      "evidence": {
+        "http_status": 404
+      }
+    },
+    {
+      "check_id": "PROTO-07",
+      "category": "protocol",
+      "kind": "spec",
+      "severity": "pass",
+      "message": "All 4 tools have valid schemas.",
+      "evidence": {
+        "tool_count": 4
+      }
+    },
+    {
+      "check_id": "PROTO-08",
+      "category": "protocol",
+      "kind": "spec",
+      "severity": "fail",
+      "message": "Unknown method returned HTTP 200 with error code -32602; expected JSON-RPC -32601 and HTTP below 500.",
+      "evidence": {
+        "http_status": 200,
+        "error_code": -32602,
+        "parse_error": null
+      }
+    },
+    {
+      "check_id": "PROTO-09",
+      "category": "protocol",
+      "kind": "spec",
+      "severity": "pass",
+      "message": "No authentication challenge observed (initialize returned HTTP 200).",
+      "evidence": {
+        "http_status": 200
+      }
+    },
+    {
+      "check_id": "LAT-01",
+      "category": "latency",
+      "kind": "heuristic",
+      "severity": "pass",
+      "message": "initialize took 5 ms (budget 1500 ms).",
+      "evidence": {
+        "init_ms": 4.6,
+        "budget_ms": 1500.0
+      }
+    },
+    {
+      "check_id": "LAT-02",
+      "category": "latency",
+      "kind": "heuristic",
+      "severity": "pass",
+      "message": "tools/list took 5 ms (budget 500 ms).",
+      "evidence": {
+        "list_tools_ms": 4.8,
+        "budget_ms": 500.0
+      }
+    },
+    {
+      "check_id": "LAT-03",
+      "category": "latency",
+      "kind": "heuristic",
+      "severity": "pass",
+      "message": "whats_expiring: p95 latency 9 ms over 10 calls (budget 800 ms).",
+      "evidence": {
+        "tool": "whats_expiring",
+        "calls": 10,
+        "p95_ms": 8.7,
+        "max_ms": 8.7,
+        "budget_ms": 800.0
+      }
+    },
+    {
+      "check_id": "LAT-03",
+      "category": "latency",
+      "kind": "heuristic",
+      "severity": "pass",
+      "message": "count_item: p95 latency 8 ms over 10 calls (budget 800 ms).",
+      "evidence": {
+        "tool": "count_item",
+        "calls": 10,
+        "p95_ms": 8.3,
+        "max_ms": 8.3,
+        "budget_ms": 800.0
+      }
+    },
+    {
+      "check_id": "SPEECH-01",
+      "category": "speech",
+      "kind": "heuristic",
+      "severity": "pass",
+      "message": "whats_expiring: reply is 20 words (limit 45).",
+      "evidence": {
+        "tool": "whats_expiring",
+        "reply": "Six items expiring in the next three days: bread two days ago, spinach yesterday, chicken breast today, and three more.",
+        "words": 20,
+        "max_words": 45
+      }
+    },
+    {
+      "check_id": "SPEECH-01",
+      "category": "speech",
+      "kind": "heuristic",
+      "severity": "pass",
+      "message": "count_item: reply is 8 words (limit 45).",
+      "evidence": {
+        "tool": "count_item",
+        "reply": "Did you mean oat milk or whole milk?",
+        "words": 8,
+        "max_words": 45
+      }
+    },
+    {
+      "check_id": "SPEECH-02",
+      "category": "speech",
+      "kind": "heuristic",
+      "severity": "pass",
+      "message": "whats_expiring: reply has no markdown or table characters.",
+      "evidence": {
+        "tool": "whats_expiring",
+        "reply": "Six items expiring in the next three days: bread two days ago, spinach yesterday, chicken breast today, and three more.",
+        "matches": []
+      }
+    },
+    {
+      "check_id": "SPEECH-02",
+      "category": "speech",
+      "kind": "heuristic",
+      "severity": "pass",
+      "message": "count_item: reply has no markdown or table characters.",
+      "evidence": {
+        "tool": "count_item",
+        "reply": "Did you mean oat milk or whole milk?",
+        "matches": []
+      }
+    },
+    {
+      "check_id": "SPEECH-03",
+      "category": "speech",
+      "kind": "heuristic",
+      "severity": "pass",
+      "message": "whats_expiring: reply has no URL, ISO timestamp or UUID.",
+      "evidence": {
+        "tool": "whats_expiring",
+        "reply": "Six items expiring in the next three days: bread two days ago, spinach yesterday, chicken breast today, and three more.",
+        "matches": []
+      }
+    },
+    {
+      "check_id": "SPEECH-03",
+      "category": "speech",
+      "kind": "heuristic",
+      "severity": "pass",
+      "message": "count_item: reply has no URL, ISO timestamp or UUID.",
+      "evidence": {
+        "tool": "count_item",
+        "reply": "Did you mean oat milk or whole milk?",
+        "matches": []
+      }
+    },
+    {
+      "check_id": "SPEECH-04",
+      "category": "speech",
+      "kind": "heuristic",
+      "severity": "pass",
+      "message": "whats_expiring: reply text is not raw JSON.",
+      "evidence": {
+        "tool": "whats_expiring",
+        "reply": "Six items expiring in the next three days: bread two days ago, spinach yesterday, chicken breast today, and three more."
+      }
+    },
+    {
+      "check_id": "SPEECH-04",
+      "category": "speech",
+      "kind": "heuristic",
+      "severity": "pass",
+      "message": "count_item: reply text is not raw JSON.",
+      "evidence": {
+        "tool": "count_item",
+        "reply": "Did you mean oat milk or whole milk?"
+      }
+    },
+    {
+      "check_id": "SPEECH-05",
+      "category": "speech",
+      "kind": "heuristic",
+      "severity": "pass",
+      "message": "whats_expiring: reply has no emoji.",
+      "evidence": {
+        "tool": "whats_expiring",
+        "reply": "Six items expiring in the next three days: bread two days ago, spinach yesterday, chicken breast today, and three more.",
+        "matches": []
+      }
+    },
+    {
+      "check_id": "SPEECH-05",
+      "category": "speech",
+      "kind": "heuristic",
+      "severity": "pass",
+      "message": "count_item: reply has no emoji.",
+      "evidence": {
+        "tool": "count_item",
+        "reply": "Did you mean oat milk or whole milk?",
+        "matches": []
+      }
+    },
+    {
+      "check_id": "SPEECH-06",
+      "category": "speech",
+      "kind": "heuristic",
+      "severity": "pass",
+      "message": "whats_expiring: structuredContent present.",
+      "evidence": {
+        "tool": "whats_expiring",
+        "reply": "Six items expiring in the next three days: bread two days ago, spinach yesterday, chicken breast today, and three more.",
+        "schema_errors": [],
+        "has_output_schema": false
+      }
+    },
+    {
+      "check_id": "SPEECH-06",
+      "category": "speech",
+      "kind": "heuristic",
+      "severity": "pass",
+      "message": "count_item: structuredContent present.",
+      "evidence": {
+        "tool": "count_item",
+        "reply": "Did you mean oat milk or whole milk?",
+        "schema_errors": [],
+        "has_output_schema": false
+      }
+    },
+    {
+      "check_id": "DES-01",
+      "category": "design",
+      "kind": "heuristic",
+      "severity": "pass",
+      "message": "Every tool sets readOnlyHint and destructiveHint explicitly.",
+      "evidence": {
+        "tools_checked": 4,
+        "offending_tools": []
+      }
+    },
+    {
+      "check_id": "DES-02",
+      "category": "design",
+      "kind": "heuristic",
+      "severity": "warn",
+      "message": "Non-read-only tools without a confirm* parameter: add_item.",
+      "evidence": {
+        "tools_checked": 2,
+        "offending_tools": [
+          "add_item"
+        ]
+      }
+    },
+    {
+      "check_id": "DES-03",
+      "category": "design",
+      "kind": "heuristic",
+      "severity": "pass",
+      "message": "Every description is 20-300 characters.",
+      "evidence": {
+        "tools_checked": 4,
+        "offending_tools": []
+      }
+    },
+    {
+      "check_id": "DES-04",
+      "category": "design",
+      "kind": "heuristic",
+      "severity": "pass",
+      "message": "No pair of descriptions has word overlap >= 0.5.",
+      "evidence": {
+        "similar_pairs": [],
+        "limit": 0.5
+      }
+    },
+    {
+      "check_id": "DES-05",
+      "category": "design",
+      "kind": "heuristic",
+      "severity": "pass",
+      "message": "Server exposes 4 tools (limit 15).",
+      "evidence": {
+        "tool_count": 4,
+        "limit": 15
+      }
+    },
+    {
+      "check_id": "DES-06",
+      "category": "design",
+      "kind": "heuristic",
+      "severity": "pass",
+      "message": "No tool has more than 3 required parameters.",
+      "evidence": {
+        "tools_checked": 4,
+        "offending_tools": []
+      }
+    }
+  ],
+  "category_scores": {
+    "protocol": 27,
+    "latency": 15,
+    "speech": 35,
+    "design": 18
+  },
+  "total": 95,
+  "spec_score": 90,
+  "heuristic_score": 97,
+  "generated_at": "2026-10-17T15:34:38+00:00",
+  "sayable_version": "0.1.0",
+  "server": {
+    "name": "sayable-pantry",
+    "version": "1.29.0",
+    "tool_count": 4
+  }
+}

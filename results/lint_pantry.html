@@ -1,0 +1,131 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Sayable scorecard: http://127.0.0.1:8801/mcp</title><style>
+:root{--bg:#fff;--fg:#1a1a1a;--muted:#666;--card:#f5f5f7;--line:#d8d8dc;--pass:#1a7f37;--warn:#9a6700;--fail:#cf222e}
+@media (prefers-color-scheme: dark){:root{--bg:#111;--fg:#eee;--muted:#9a9a9a;--card:#1c1c1e;--line:#333;--pass:#3fb950;--warn:#d29922;--fail:#f85149}}
+*{box-sizing:border-box}
+body{margin:0;padding:24px;background:var(--bg);color:var(--fg);font:15px/1.5 system-ui,-apple-system,Segoe UI,sans-serif;max-width:1000px;margin-inline:auto}
+h1{margin:0 0 4px;font-size:24px}h2{margin:32px 0 8px;font-size:18px}
+.muted{color:var(--muted)}
+.cards{display:flex;gap:12px;flex-wrap:wrap;margin:16px 0}
+.card{flex:1 1 180px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px}
+.card .n{font-size:34px;font-weight:700}.card .l{font-size:13px;color:var(--muted)}
+.good{color:var(--pass)}.mid{color:var(--warn)}.bad{color:var(--fail)}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+.sev{font-weight:600;text-transform:uppercase;font-size:12px}
+.sev-pass{color:var(--pass)}.sev-warn{color:var(--warn)}.sev-fail{color:var(--fail)}
+.kind{font-size:12px;border:1px solid var(--line);border-radius:4px;padding:1px 6px}
+pre{margin:6px 0 0;padding:8px;background:var(--card);border-radius:6px;overflow-x:auto;font-size:12px}
+.wrap{overflow-x:auto}
+</style></head><body><h1>Sayable scorecard</h1><div class="muted">http://127.0.0.1:8801/mcp</div><div class="muted">server sayable-pantry 1.29.0 &middot; protocol 2025-11-25 &middot; generated 2026-10-17T15:34:38+00:00 &middot; sayable-lint 0.1.0</div><div class="cards"><div class="card"><div class="n good">90</div><div><strong>Spec score</strong></div><div class="l">protocol checks derived from the MCP specification</div></div><div class="card"><div class="n good">97</div><div><strong>Heuristic score</strong></div><div class="l">latency, speech and design checks</div></div><div class="card"><div class="n good">95</div><div><strong>Total</strong></div><div class="l">weighted 0-100 across all categories</div></div></div><p class="muted">Heuristic checks are configurable opinions about voice UX (thresholds are set with --max-words and --latency-ms); spec checks are not.</p><h2>Category scores</h2><div class="wrap"><table><tr><th>Category</th><th>Score</th></tr><tr><td>protocol</td><td>27 / 30</td></tr><tr><td>latency</td><td>15 / 15</td></tr><tr><td>speech</td><td>35 / 35</td></tr><tr><td>design</td><td>18 / 20</td></tr></table></div><h2>Tools (4)</h2><div class="wrap"><table><tr><th>Name</th><th>readOnlyHint</th><th>destructiveHint</th><th>Description</th></tr><tr><td>whats_expiring</td><td>True</td><td>False</td><td>List pantry items expiring within a number of days, soonest first, including items already expired.</td></tr><tr><td>count_item</td><td>True</td><td>False</td><td>Say how many of one item are in the pantry. Asks which one you mean if the name matches several items.</td></tr><tr><td>add_item</td><td>False</td><td>False</td><td>Add an item to the pantry with a quantity and an optional expiry such as tomorrow or Friday.</td></tr><tr><td>remove_items</td><td>False</td><td>True</td><td>Remove pantry items by name, all expired items, or everything. Large removals first ask for a spoken confirmation.</td></tr></table></div><h2>Findings (31)</h2><div class="wrap"><table><tr><th>ID</th><th>Kind</th><th>Result</th><th>Detail</th></tr><tr><td>PROTO-01</td><td><span class="kind">spec</span></td><td><span class="sev sev-pass">pass</span></td><td>initialize ok, protocol 2025-11-25.<details><summary class="muted">evidence</summary><pre>{
+  &quot;content_type&quot;: &quot;text/event-stream&quot;,
+  &quot;http_status&quot;: 200,
+  &quot;parse_error&quot;: null,
+  &quot;protocolVersion&quot;: &quot;2025-11-25&quot;
+}</pre></details></td></tr><tr><td>PROTO-02</td><td><span class="kind">spec</span></td><td><span class="sev sev-pass">pass</span></td><td>Invalid MCP-Protocol-Version header got 400.<details><summary class="muted">evidence</summary><pre>{
+  &quot;http_status&quot;: 400
+}</pre></details></td></tr><tr><td>PROTO-03</td><td><span class="kind">spec</span></td><td><span class="sev sev-pass">pass</span></td><td>notifications/initialized returned 202.<details><summary class="muted">evidence</summary><pre>{
+  &quot;http_status&quot;: 202
+}</pre></details></td></tr><tr><td>PROTO-04</td><td><span class="kind">spec</span></td><td><span class="sev sev-pass">pass</span></td><td>Request with a foreign Origin got 403.<details><summary class="muted">evidence</summary><pre>{
+  &quot;http_status&quot;: 403
+}</pre></details></td></tr><tr><td>PROTO-05</td><td><span class="kind">spec</span></td><td><span class="sev sev-pass">pass</span></td><td>GET returned 200 (text/event-stream), which the spec allows.<details><summary class="muted">evidence</summary><pre>{
+  &quot;content_type&quot;: &quot;text/event-stream&quot;,
+  &quot;http_status&quot;: 200
+}</pre></details></td></tr><tr><td>PROTO-06</td><td><span class="kind">spec</span></td><td><span class="sev sev-pass">pass</span></td><td>Unknown Mcp-Session-Id got 404.<details><summary class="muted">evidence</summary><pre>{
+  &quot;http_status&quot;: 404
+}</pre></details></td></tr><tr><td>PROTO-07</td><td><span class="kind">spec</span></td><td><span class="sev sev-pass">pass</span></td><td>All 4 tools have valid schemas.<details><summary class="muted">evidence</summary><pre>{
+  &quot;tool_count&quot;: 4
+}</pre></details></td></tr><tr><td>PROTO-08</td><td><span class="kind">spec</span></td><td><span class="sev sev-fail">fail</span></td><td>Unknown method returned HTTP 200 with error code -32602; expected JSON-RPC -32601 and HTTP below 500.<details><summary class="muted">evidence</summary><pre>{
+  &quot;error_code&quot;: -32602,
+  &quot;http_status&quot;: 200,
+  &quot;parse_error&quot;: null
+}</pre></details></td></tr><tr><td>PROTO-09</td><td><span class="kind">spec</span></td><td><span class="sev sev-pass">pass</span></td><td>No authentication challenge observed (initialize returned HTTP 200).<details><summary class="muted">evidence</summary><pre>{
+  &quot;http_status&quot;: 200
+}</pre></details></td></tr><tr><td>LAT-01</td><td><span class="kind">heuristic</span></td><td><span class="sev sev-pass">pass</span></td><td>initialize took 5 ms (budget 1500 ms).<details><summary class="muted">evidence</summary><pre>{
+  &quot;budget_ms&quot;: 1500.0,
+  &quot;init_ms&quot;: 4.6
+}</pre></details></td></tr><tr><td>LAT-02</td><td><span class="kind">heuristic</span></td><td><span class="sev sev-pass">pass</span></td><td>tools/list took 5 ms (budget 500 ms).<details><summary class="muted">evidence</summary><pre>{
+  &quot;budget_ms&quot;: 500.0,
+  &quot;list_tools_ms&quot;: 4.8
+}</pre></details></td></tr><tr><td>LAT-03</td><td><span class="kind">heuristic</span></td><td><span class="sev sev-pass">pass</span></td><td>whats_expiring: p95 latency 9 ms over 10 calls (budget 800 ms).<details><summary class="muted">evidence</summary><pre>{
+  &quot;budget_ms&quot;: 800.0,
+  &quot;calls&quot;: 10,
+  &quot;max_ms&quot;: 8.7,
+  &quot;p95_ms&quot;: 8.7,
+  &quot;tool&quot;: &quot;whats_expiring&quot;
+}</pre></details></td></tr><tr><td>LAT-03</td><td><span class="kind">heuristic</span></td><td><span class="sev sev-pass">pass</span></td><td>count_item: p95 latency 8 ms over 10 calls (budget 800 ms).<details><summary class="muted">evidence</summary><pre>{
+  &quot;budget_ms&quot;: 800.0,
+  &quot;calls&quot;: 10,
+  &quot;max_ms&quot;: 8.3,
+  &quot;p95_ms&quot;: 8.3,
+  &quot;tool&quot;: &quot;count_item&quot;
+}</pre></details></td></tr><tr><td>SPEECH-01</td><td><span class="kind">heuristic</span></td><td><span class="sev sev-pass">pass</span></td><td>whats_expiring: reply is 20 words (limit 45).<details><summary class="muted">evidence</summary><pre>{
+  &quot;max_words&quot;: 45,
+  &quot;reply&quot;: &quot;Six items expiring in the next three days: bread two days ago, spinach yesterday, chicken breast today, and three more.&quot;,
+  &quot;tool&quot;: &quot;whats_expiring&quot;,
+  &quot;words&quot;: 20
+}</pre></details></td></tr><tr><td>SPEECH-01</td><td><span class="kind">heuristic</span></td><td><span class="sev sev-pass">pass</span></td><td>count_item: reply is 8 words (limit 45).<details><summary class="muted">evidence</summary><pre>{
+  &quot;max_words&quot;: 45,
+  &quot;reply&quot;: &quot;Did you mean oat milk or whole milk?&quot;,
+  &quot;tool&quot;: &quot;count_item&quot;,
+  &quot;words&quot;: 8
+}</pre></details></td></tr><tr><td>SPEECH-02</td><td><span class="kind">heuristic</span></td><td><span class="sev sev-pass">pass</span></td><td>whats_expiring: reply has no markdown or table characters.<details><summary class="muted">evidence</summary><pre>{
+  &quot;matches&quot;: [],
+  &quot;reply&quot;: &quot;Six items expiring in the next three days: bread two days ago, spinach yesterday, chicken breast today, and three more.&quot;,
+  &quot;tool&quot;: &quot;whats_expiring&quot;
+}</pre></details></td></tr><tr><td>SPEECH-02</td><td><span class="kind">heuristic</span></td><td><span class="sev sev-pass">pass</span></td><td>count_item: reply has no markdown or table characters.<details><summary class="muted">evidence</summary><pre>{
+  &quot;matches&quot;: [],
+  &quot;reply&quot;: &quot;Did you mean oat milk or whole milk?&quot;,
+  &quot;tool&quot;: &quot;count_item&quot;
+}</pre></details></td></tr><tr><td>SPEECH-03</td><td><span class="kind">heuristic</span></td><td><span class="sev sev-pass">pass</span></td><td>whats_expiring: reply has no URL, ISO timestamp or UUID.<details><summary class="muted">evidence</summary><pre>{
+  &quot;matches&quot;: [],
+  &quot;reply&quot;: &quot;Six items expiring in the next three days: bread two days ago, spinach yesterday, chicken breast today, and three more.&quot;,
+  &quot;tool&quot;: &quot;whats_expiring&quot;
+}</pre></details></td></tr><tr><td>SPEECH-03</td><td><span class="kind">heuristic</span></td><td><span class="sev sev-pass">pass</span></td><td>count_item: reply has no URL, ISO timestamp or UUID.<details><summary class="muted">evidence</summary><pre>{
+  &quot;matches&quot;: [],
+  &quot;reply&quot;: &quot;Did you mean oat milk or whole milk?&quot;,
+  &quot;tool&quot;: &quot;count_item&quot;
+}</pre></details></td></tr><tr><td>SPEECH-04</td><td><span class="kind">heuristic</span></td><td><span class="sev sev-pass">pass</span></td><td>whats_expiring: reply text is not raw JSON.<details><summary class="muted">evidence</summary><pre>{
+  &quot;reply&quot;: &quot;Six items expiring in the next three days: bread two days ago, spinach yesterday, chicken breast today, and three more.&quot;,
+  &quot;tool&quot;: &quot;whats_expiring&quot;
+}</pre></details></td></tr><tr><td>SPEECH-04</td><td><span class="kind">heuristic</span></td><td><span class="sev sev-pass">pass</span></td><td>count_item: reply text is not raw JSON.<details><summary class="muted">evidence</summary><pre>{
+  &quot;reply&quot;: &quot;Did you mean oat milk or whole milk?&quot;,
+  &quot;tool&quot;: &quot;count_item&quot;
+}</pre></details></td></tr><tr><td>SPEECH-05</td><td><span class="kind">heuristic</span></td><td><span class="sev sev-pass">pass</span></td><td>whats_expiring: reply has no emoji.<details><summary class="muted">evidence</summary><pre>{
+  &quot;matches&quot;: [],
+  &quot;reply&quot;: &quot;Six items expiring in the next three days: bread two days ago, spinach yesterday, chicken breast today, and three more.&quot;,
+  &quot;tool&quot;: &quot;whats_expiring&quot;
+}</pre></details></td></tr><tr><td>SPEECH-05</td><td><span class="kind">heuristic</span></td><td><span class="sev sev-pass">pass</span></td><td>count_item: reply has no emoji.<details><summary class="muted">evidence</summary><pre>{
+  &quot;matches&quot;: [],
+  &quot;reply&quot;: &quot;Did you mean oat milk or whole milk?&quot;,
+  &quot;tool&quot;: &quot;count_item&quot;
+}</pre></details></td></tr><tr><td>SPEECH-06</td><td><span class="kind">heuristic</span></td><td><span class="sev sev-pass">pass</span></td><td>whats_expiring: structuredContent present.<details><summary class="muted">evidence</summary><pre>{
+  &quot;has_output_schema&quot;: false,
+  &quot;reply&quot;: &quot;Six items expiring in the next three days: bread two days ago, spinach yesterday, chicken breast today, and three more.&quot;,
+  &quot;schema_errors&quot;: [],
+  &quot;tool&quot;: &quot;whats_expiring&quot;
+}</pre></details></td></tr><tr><td>SPEECH-06</td><td><span class="kind">heuristic</span></td><td><span class="sev sev-pass">pass</span></td><td>count_item: structuredContent present.<details><summary class="muted">evidence</summary><pre>{
+  &quot;has_output_schema&quot;: false,
+  &quot;reply&quot;: &quot;Did you mean oat milk or whole milk?&quot;,
+  &quot;schema_errors&quot;: [],
+  &quot;tool&quot;: &quot;count_item&quot;
+}</pre></details></td></tr><tr><td>DES-01</td><td><span class="kind">heuristic</span></td><td><span class="sev sev-pass">pass</span></td><td>Every tool sets readOnlyHint and destructiveHint explicitly.<details><summary class="muted">evidence</summary><pre>{
+  &quot;offending_tools&quot;: [],
+  &quot;tools_checked&quot;: 4
+}</pre></details></td></tr><tr><td>DES-02</td><td><span class="kind">heuristic</span></td><td><span class="sev sev-warn">warn</span></td><td>Non-read-only tools without a confirm* parameter: add_item.<details><summary class="muted">evidence</summary><pre>{
+  &quot;offending_tools&quot;: [
+    &quot;add_item&quot;
+  ],
+  &quot;tools_checked&quot;: 2
+}</pre></details></td></tr><tr><td>DES-03</td><td><span class="kind">heuristic</span></td><td><span class="sev sev-pass">pass</span></td><td>Every description is 20-300 characters.<details><summary class="muted">evidence</summary><pre>{
+  &quot;offending_tools&quot;: [],
+  &quot;tools_checked&quot;: 4
+}</pre></details></td></tr><tr><td>DES-04</td><td><span class="kind">heuristic</span></td><td><span class="sev sev-pass">pass</span></td><td>No pair of descriptions has word overlap &gt;= 0.5.<details><summary class="muted">evidence</summary><pre>{
+  &quot;limit&quot;: 0.5,
+  &quot;similar_pairs&quot;: []
+}</pre></details></td></tr><tr><td>DES-05</td><td><span class="kind">heuristic</span></td><td><span class="sev sev-pass">pass</span></td><td>Server exposes 4 tools (limit 15).<details><summary class="muted">evidence</summary><pre>{
+  &quot;limit&quot;: 15,
+  &quot;tool_count&quot;: 4
+}</pre></details></td></tr><tr><td>DES-06</td><td><span class="kind">heuristic</span></td><td><span class="sev sev-pass">pass</span></td><td>No tool has more than 3 required parameters.<details><summary class="muted">evidence</summary><pre>{
+  &quot;offending_tools&quot;: [],
+  &quot;tools_checked&quot;: 4
+}</pre></details></td></tr></table></div></body></html>

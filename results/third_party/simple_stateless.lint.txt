@@ -1,0 +1,20 @@
+wrote results/third_party/simple_stateless.json
+wrote results/third_party/simple_stateless.html
+Sayable scorecard for http://127.0.0.1:9102/mcp
+server: mcp-streamable-http-stateless-demo 1.29.0   protocol: 2025-11-25
+
+SPEC score        77/100  (protocol checks from the MCP spec)
+HEURISTIC score   81/100  (latency + speech + design; configurable opinions)
+TOTAL             80/100
+
+  protocol  23/30
+  latency   15/15
+  speech    29/35
+  design    13/20
+
+  [FAIL] PROTO-04 Request with a foreign Origin got HTTP 200; servers must reject it with 403 (enable DNS-rebinding / Origin protection).
+  [FAIL] PROTO-08 Unknown method returned HTTP 200 with error code -32602; expected JSON-RPC -32601 and HTTP below 500.
+  [FAIL] SPEECH-06 start-notification-stream: no structuredContent returned alongside the spoken text.
+  [FAIL] DES-01 Tools missing an explicit readOnlyHint or destructiveHint: start-notification-stream.
+  [FAIL] DES-02 Non-read-only tools without a confirm* parameter: start-notification-stream.
+19 of 24 checks passed

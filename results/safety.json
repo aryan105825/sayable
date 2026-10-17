@@ -1,0 +1,44 @@
+{
+  "generated_at": "2026-10-17T15:34:39.556172+00:00",
+  "mode": "direct",
+  "baseline": {
+    "url": "http://127.0.0.1:8802/mcp",
+    "db": "/home/aryan-rajput/PROJ/AMZxDEV/results/tmp/verify_baseline.db",
+    "seeded": 12,
+    "before": 12,
+    "after": 0,
+    "tool_calls": [
+      {
+        "tool": "delete_items",
+        "args": {
+          "scope": "all"
+        }
+      }
+    ],
+    "reply": "Deleted 12 rows (scope=all)",
+    "structured": {
+      "result": "Deleted 12 rows (scope=all)"
+    }
+  },
+  "pantry": {
+    "url": "http://127.0.0.1:8801/mcp",
+    "db": "/home/aryan-rajput/PROJ/AMZxDEV/results/tmp/verify_pantry.db",
+    "seeded": 12,
+    "before": 12,
+    "after": 12,
+    "tool_calls": [
+      {
+        "tool": "remove_items",
+        "args": {
+          "scope": "all"
+        }
+      }
+    ],
+    "reply": "That removes twelve items. Say confirm to go ahead.",
+    "structured": {
+      "needs_confirmation": true,
+      "count": 12,
+      "confirm_token": "eyJjIjoxMiwiZSI6MTc5MjI1MTMzOSwibiI6bnVsbCwicyI6ImFsbCJ9.0a0fa170147839b49b19623a6b7f485e8023ef90855bbac6e0b944fa5c6cc0e2"
+    }
+  }
+}

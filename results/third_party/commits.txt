@@ -1,0 +1,3 @@
+simple_streamable	https://github.com/modelcontextprotocol/python-sdk.git	98b7159cb89274964055d2c016e3360a551280d0
+simple_stateless	https://github.com/modelcontextprotocol/python-sdk.git	98b7159cb89274964055d2c016e3360a551280d0
+everything	https://github.com/modelcontextprotocol/python-sdk.git	98b7159cb89274964055d2c016e3360a551280d0

@@ -1,0 +1,14 @@
+{
+  "pantry": {
+    "spec_score": 90,
+    "heuristic_score": 97,
+    "total": 95
+  },
+  "baseline": {
+    "spec_score": 90,
+    "heuristic_score": 66,
+    "total": 73
+  },
+  "heuristic_gap": 31,
+  "note": "heuristic scores are configurable opinions"
+}

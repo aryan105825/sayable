@@ -1,0 +1,15 @@
+# Copy to eval/third_party.specs and fill in. One server per line, three lines in total:
+#   label|port|repo_dir|launch_command
+# - label: [a-z0-9_-]+, used as the output file name.
+# - port: a free local port. The launch command receives it as $PORT.
+# - repo_dir: a CLEAN git checkout of an unmodified official example (the script refuses modified checkouts,
+#   and records the commit hash in results/third_party/commits.txt).
+# - launch_command: runs inside repo_dir, must serve Streamable HTTP at http://127.0.0.1:$PORT/mcp.
+#
+# Example shape only. Check the example's own README for the real command and flags:
+# example_one|9101|/home/you/src/python-sdk|uv run mcp-simple-streamablehttp --port $PORT
+# example_two|9102|/home/you/src/python-sdk|uv run mcp-simple-streamablehttp-stateless --port $PORT
+# example_three|9103|/home/you/src/typescript-sdk|npx tsx path/to/example.ts
+#
+# Then add an entry per server to eval/probe_args.json, keyed by the server's own serverInfo.name, listing
+# only READ-ONLY tools you have read the source of. The linter never calls tools that are not listed there.

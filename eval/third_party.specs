@@ -1,0 +1,3 @@
+simple_streamable|9101|/home/aryan-rajput/src/python-sdk|PYTHONPATH=examples/servers/simple-streamablehttp python -m mcp_simple_streamablehttp --port $PORT
+simple_stateless|9102|/home/aryan-rajput/src/python-sdk|PYTHONPATH=examples/servers/simple-streamablehttp-stateless python -m mcp_simple_streamablehttp_stateless --port $PORT
+everything|9103|/home/aryan-rajput/src/python-sdk|PYTHONPATH=examples/servers/everything-server python -m mcp_everything_server --port $PORT
